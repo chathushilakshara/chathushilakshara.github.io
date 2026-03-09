@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanketh Narangoda | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<canvas id="bgCanvas"></canvas>
+
+<!-- ── BADMINTON WIDGET ── -->
+<div id="badminton-widget" title="Click to scroll!">
+    <div class="badminton-container" id="badmintonBtn">
+        <div class="racket-icon" id="racketIcon">🏸</div>
+        <div class="racket-label" id="racketLabel">scroll ↓</div>
+    </div>
+</div>
+<div id="shuttlecock">🏸</div>
+
+<!-- Header -->
+<header>
+    <nav>
+        <a href="index.html" class="logo"><span>&lt;</span>Sanketh<span>/&gt;</span></a>
+        <button class="theme-bulb" id="themeBulb" aria-label="Toggle theme">
+            <i class="fas fa-lightbulb"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="projects.html"><i class="fas fa-rocket"></i> Projects</a></li>
+            <li><a href="contact.html" class="nav-contact-btn"><i class="fas fa-satellite-dish"></i> Let's talk</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-badge reveal">
+            <span class="badge-dot"></span>
+            <span>Available for opportunities</span>
+        </div>
+        <h1 class="hero-title reveal">
+            Hi, I'm <span class="gradient-text">Sanketh</span>
+        </h1>
+        <div class="hero-subtitle reveal">
+            <span class="typed-text" id="typedText"></span><span class="typed-cursor">|</span>
+        </div>
+        <p class="hero-desc reveal">
+            Full-stack developer & problem solver from Sri Lanka 🇱🇰. I build fast, beautiful, and scalable digital experiences that make an impact.
+        </p>
+        <div class="hero-btns reveal">
+            <a href="projects.html" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+            <a href="contact.html" class="btn btn-secondary"><i class="fas fa-satellite-dish"></i> Get In Touch</a>
+        </div>
+        <div class="hero-stats reveal">
+            <div class="stat-item">
+                <span class="stat-num" data-target="15">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num" data-target="3">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Years Exp</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num" data-target="20">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual reveal">
+        <div class="hero-avatar-ring">
+            <div class="hero-avatar">
+                <img src="photos/sunny.jpg" alt="Sanketh" onerror="this.parentElement.innerHTML='<div class=\'avatar-fallback\'>S</div>'">
+            </div>
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="skill-chips">
+            <span class="chip chip-1">React ⚛️</span>
+            <span class="chip chip-2">Node.js 🟢</span>
+            <span class="chip chip-3">Firebase 🔥</span>
+            <span class="chip chip-4">Python 🐍</span>
+            <span class="chip chip-5">java 🟡</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about-section" id="about">
+    <div class="about-inner">
+        <div class="reveal section-header-left">
+            <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+            <div class="section-line" style="margin:0 0 1.5rem;"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>I'm a passionate full-stack developer who loves turning complex problems into elegant solutions. With expertise spanning web, mobile, and AI, I bring ideas to life with clean code and beautiful design.</p>
+                <p style="margin-top:1rem;">When I'm not coding, you'll find me exploring new tech, playing badminton 🏸, or brainstorming the next big idea.</p>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend</h4>
+                        <div class="skill-tags"><span>HTML/CSS</span><span>JavaScript</span></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend</h4>
+                        <div class="skill-tags"><span>Node.js</span><span>Python</span><span>Firebase</span><span>REST API</span></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Mobile & AI</h4>
+                        <div class="skill-tags"><span>Flutter</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-cards reveal">
+                <div class="about-card">
+                    <div class="about-card-icon">🎯</div>
+                    <h4>Problem Solver</h4>
+                    <p>I thrive on challenges and love crafting elegant solutions to complex problems.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">🚀</div>
+                    <h4>Fast Learner</h4>
+                    <p>Always exploring new technologies and staying ahead of the curve.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">🤝</div>
+                    <h4>Team Player</h4>
+                    <p>Collaborative and communicative — great things are built together.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">✨</div>
+                    <h4>Detail-Oriented</h4>
+                    <p>Pixel-perfect design, clean code, and polished user experiences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ PROJECTS PREVIEW ══════════ -->
+<section class="projects-section" id="projects">
+    <div class="projects-inner">
+        <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+            <h2 class="section-title">Featured <span class="gradient-text">Projects</span> 🚀</h2>
+            <div class="section-line"></div>
+            <p class="section-subtitle">A selection of my best work — click any card to explore</p>
+        </div>
+        <div class="featured-grid" id="featuredGrid">
+            <div class="projects-loading" style="grid-column:1/-1;">
+                <div class="loading-spinner"></div>
+                <p>Loading featured projects... 🔄</p>
+            </div>
+        </div>
+        <div class="reveal" style="text-align:center;margin-top:3rem;">
+            <a href="projects.html" class="btn btn-secondary" style="font-size:0.85rem;">
+                <i class="fas fa-th-large"></i> View All Projects →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════ -->
+<section class="reviews-section-wrap" id="reviews">
+    <div class="reviews-section">
+        <div class="section-header reveal">
+            <h2 class="section-title">Client <span class="gradient-text">Reviews</span> ⭐</h2>
+            <div class="section-line"></div>
+            <p class="section-subtitle">What people say about working with me</p>
+            <button class="btn btn-review-leave" id="leaveReviewBtn" style="margin-top:1.4rem;">
+                <i class="fas fa-star"></i> Leave a Review
+            </button>
+        </div>
+        <div class="reviews-grid" id="reviewsGrid">
+            <div class="reviews-loading" style="grid-column:1/-1;">
+                <div class="loading-spinner"></div>
+                <p>Loading reviews from database... 🔄</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── REVIEW MODAL ── -->
+<div class="review-modal-overlay" id="reviewModalOverlay">
+    <div class="review-modal">
+        <button class="review-modal-close" id="reviewModalClose"><i class="fas fa-times"></i></button>
+
+        <!-- Step 1: Password -->
+        <div class="review-step" id="reviewStep1">
+            <div class="review-modal-icon">🔐</div>
+            <h3>Leave a Review</h3>
+            <p class="review-modal-sub">Enter the 4-digit password Sanketh gave you to submit a review.</p>
+            <div class="review-pin-row" id="pinRow">
+                <input class="pin-input" type="password" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input class="pin-input" type="password" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input class="pin-input" type="password" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input class="pin-input" type="password" maxlength="1" inputmode="numeric" pattern="[0-9]">
+            </div>
+            <div class="review-pin-error" id="pinError"></div>
+            <button class="btn btn-primary review-btn-full" id="pinSubmitBtn">
+                <i class="fas fa-unlock"></i> Unlock
+            </button>
+        </div>
+
+        <!-- Step 2: Review Form -->
+        <div class="review-step" id="reviewStep2" style="display:none;">
+            <div class="review-modal-icon">✍️</div>
+            <h3>Your Review</h3>
+            <p class="review-modal-sub">Share your experience working with Sanketh.</p>
+
+            <div class="review-form-group">
+                <label>Your Name 👤</label>
+                <input type="text" id="rv_name" placeholder="John Doe" maxlength="60">
+            </div>
+            <div class="review-form-group">
+                <label>Your Role / Company 💼</label>
+                <input type="text" id="rv_role" placeholder="CEO at Acme Inc." maxlength="80">
+            </div>
+            <div class="review-form-group">
+                <label>Rating ⭐</label>
+                <div class="star-picker" id="starPicker">
+                    <span class="star-pick" data-val="1">★</span>
+                    <span class="star-pick" data-val="2">★</span>
+                    <span class="star-pick" data-val="3">★</span>
+                    <span class="star-pick" data-val="4">★</span>
+                    <span class="star-pick" data-val="5">★</span>
+                </div>
+            </div>
+            <div class="review-form-group">
+                <label>Your Review 💬</label>
+                <textarea id="rv_text" placeholder="Tell others about your experience working with Sanketh..." maxlength="500" rows="4"></textarea>
+                <div class="review-char-count"><span id="rv_charcount">0</span>/500</div>
+            </div>
+
+            <div class="review-form-error" id="reviewFormError"></div>
+            <button class="btn btn-primary review-btn-full" id="reviewSubmitBtn">
+                <i class="fas fa-paper-plane"></i> Submit Review 🚀
+            </button>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div class="review-step" id="reviewStep3" style="display:none;">
+            <div class="review-modal-icon" style="font-size:3.5rem;">🎉</div>
+            <h3>Thank You!</h3>
+            <p class="review-modal-sub">Your review has been submitted and will appear on the site shortly. Sanketh really appreciates it! 🙏</p>
+            <button class="btn btn-primary review-btn-full" id="reviewDoneBtn">
+                <i class="fas fa-check"></i> Done
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-logo"><span class="gradient-text">Sanketh</span> 👨‍💻</div>
+    <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;">
+        <a href="projects.html" style="color:var(--gray);text-decoration:none;font-size:0.85rem;">🚀 Projects</a>
+        <a href="contact.html" style="color:var(--gray);text-decoration:none;font-size:0.85rem;">📬 Contact</a>
+    </div>
+</footer>
+
+<!-- PROJECT POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-card">
+        <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
+        <div id="popupImgContainer"></div>
+        <div class="popup-gallery" id="popupGallery"></div>
+        <div class="popup-glow-bar"></div>
+        <div class="popup-body">
+            <div class="popup-tag" id="popupType"></div>
+            <h2 id="popupTitle"></h2>
+            <p class="popup-short-desc" id="popupShortDesc"></p>
+            <p class="popup-long-desc" id="popupDesc"></p>
+            <div id="popupFeatures" style="display:none;margin-bottom:1.5rem;">
+                <h4 style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--blue-bright);margin-bottom:0.8rem;">✨ Features</h4>
+                <ul id="popupFeaturesList" style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;"></ul>
+            </div>
+            <div class="popup-tech" id="popupTech"></div>
+            <div class="popup-btns">
+                <a href="#" id="popupDemoBtn" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> Live Demo 🌐</a>
+                <a href="#" id="popupCodeBtn" class="btn btn-secondary" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* ── CURSOR ── */
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursorFollower');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cursor.style.left=(mx-6)+'px';cursor.style.top=(my-6)+'px';});
+(function animCursor(){fx+=(mx-fx)*0.12;fy+=(my-fy)*0.12;follower.style.left=(fx-18)+'px';follower.style.top=(fy-18)+'px';requestAnimationFrame(animCursor);})();
+
+/* ── THEME ── */
+var themeBulb=document.getElementById('themeBulb');
+var THEME_KEY='portfolio-theme';
+function applyTheme(mode){var isLight=mode==='light';document.body.classList.toggle('light-mode',isLight);if(themeBulb){themeBulb.innerHTML=isLight?'<i class="fas fa-sun"></i>':'<i class="fas fa-lightbulb"></i>';}}
+applyTheme(localStorage.getItem(THEME_KEY)==='light'?'light':'dark');
+if(themeBulb){themeBulb.addEventListener('click',function(){var next=document.body.classList.contains('light-mode')?'dark':'light';applyTheme(next);localStorage.setItem(THEME_KEY,next);});}
+
+/* ── HAMBURGER ── */
+var hamburger=document.getElementById('hamburger');
+var navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
+
+/* ── HOVER CURSOR ── */
+document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';});
+    el.addEventListener('mouseleave',function(){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';});
+});
+
+/* ── CANVAS ── */
+var canvas=document.getElementById('bgCanvas');
+var ctx=canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+var stars=[];for(var i=0;i<120;i++)stars.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*1.5+0.3,speed:Math.random()*0.3+0.05});
+var tick=0;
+(function drawBG(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='rgba(0,102,255,0.04)';ctx.lineWidth=1;for(var x=0;x<canvas.width;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}for(var y=0;y<canvas.height;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}stars.forEach(function(s){ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(0,168,255,'+(0.3+0.7*Math.abs(Math.sin(tick*0.01+s.x)))+')';ctx.fill();s.y+=s.speed;if(s.y>canvas.height){s.y=0;s.x=Math.random()*canvas.width;}});tick++;requestAnimationFrame(drawBG);})();
+
+/* ── REVEAL ── */
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting)setTimeout(function(){en.target.classList.add('visible');},i*80);});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+
+/* ── TYPED TEXT ── */
+var phrases=['Full-Stack Developer 💻','UI/UX Designer 🎨','Problem Solver 🧩','AI Enthusiast 🤖'];
+var phraseIdx=0,charIdx=0,deleting=false;
+function typeLoop(){
+    var phrase=phrases[phraseIdx];
+    var el=document.getElementById('typedText');
+    if(!el)return;
+    if(!deleting){el.textContent=phrase.substring(0,charIdx+1);charIdx++;if(charIdx===phrase.length){deleting=true;setTimeout(typeLoop,1600);return;}}
+    else{el.textContent=phrase.substring(0,charIdx-1);charIdx--;if(charIdx===0){deleting=false;phraseIdx=(phraseIdx+1)%phrases.length;}}
+    setTimeout(typeLoop,deleting?60:90);
+}
+typeLoop();
+
+/* ── STAT COUNTER ── */
+function animateStats(){
+    document.querySelectorAll('.stat-num').forEach(function(el){
+        var target=parseInt(el.dataset.target||'0');
+        var start=0,dur=1200,step=Math.ceil(dur/target);
+        var timer=setInterval(function(){start++;el.textContent=start;if(start>=target)clearInterval(timer);},step);
+    });
+}
+var statsObs=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){animateStats();statsObs.disconnect();}});},{threshold:0.5});
+var statsEl=document.querySelector('.hero-stats');
+if(statsEl)statsObs.observe(statsEl);
+
+/* ── BADMINTON WIDGET ── */
+(function(){
+    var scrolledDown = false;
+    var btn = document.getElementById('badmintonBtn');
+    var racketLabel = document.getElementById('racketLabel');
+    var shuttle = document.getElementById('shuttlecock');
+    var widgetEl = document.getElementById('badminton-widget');
+
+    function fireShuttle(fromBottom) {
+        var rect = widgetEl.getBoundingClientRect();
+        var startX = rect.left + rect.width / 2 - 12;
+        var startY = fromBottom ? rect.top : rect.top + rect.height;
+        var endY = fromBottom ? -100 : window.innerHeight + 100;
+
+        shuttle.style.left = startX + 'px';
+        shuttle.style.top = startY + 'px';
+        shuttle.style.display = 'block';
+        shuttle.classList.remove('flying');
+        // Trigger reflow
+        shuttle.offsetWidth;
+        shuttle.classList.add('flying');
+
+        // Animate shuttle position
+        var start = null;
+        var dur = 650;
+        function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            var y = startY + (endY - startY) * p;
+            shuttle.style.top = y + 'px';
+            if (p < 1) requestAnimationFrame(step);
+            else { shuttle.style.display = 'none'; shuttle.classList.remove('flying'); }
+        }
+        requestAnimationFrame(step);
+    }
+
+    btn.addEventListener('click', function() {
+        if (!scrolledDown) {
+            // Fire shuttle downward
+            fireShuttle(true);
+            // Scroll to projects section
+            var target = document.getElementById('projects') || document.getElementById('reviews');
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrolledDown = true;
+            racketLabel.textContent = 'scroll ↑';
+            btn.querySelector('.racket-icon').style.transform = 'scaleY(-1)';
+        } else {
+            // Fire shuttle upward
+            fireShuttle(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            scrolledDown = false;
+            racketLabel.textContent = 'scroll ↓';
+            btn.querySelector('.racket-icon').style.transform = '';
+        }
+    });
+
+    // Auto-update scrolledDown state based on scroll position
+    window.addEventListener('scroll', function() {
+        var mid = document.documentElement.scrollHeight / 2;
+        var atBottom = window.scrollY > mid * 0.4;
+        if (atBottom !== scrolledDown) {
+            scrolledDown = atBottom;
+            racketLabel.textContent = scrolledDown ? 'scroll ↑' : 'scroll ↓';
+            btn.querySelector('.racket-icon').style.transform = scrolledDown ? 'scaleY(-1)' : '';
+        }
+    });
+})();
+
+/* ── REVIEW MODAL ── */
+(function(){
+    // ── CONFIG: change this to your desired 4-digit password ──
+    var REVIEW_PIN = '1234';
+
+    var overlay   = document.getElementById('reviewModalOverlay');
+    var openBtn   = document.getElementById('leaveReviewBtn');
+    var closeBtn  = document.getElementById('reviewModalClose');
+    var step1     = document.getElementById('reviewStep1');
+    var step2     = document.getElementById('reviewStep2');
+    var step3     = document.getElementById('reviewStep3');
+    var pinError  = document.getElementById('pinError');
+    var pinInputs = document.querySelectorAll('.pin-input');
+    var selectedRating = 5;
+
+    function openModal(){
+        overlay.classList.add('active');
+        document.body.style.overflow='hidden';
+        showStep(1);
+        pinInputs.forEach(function(i){i.value='';});
+        pinError.textContent='';
+        setTimeout(function(){if(pinInputs[0])pinInputs[0].focus();},200);
+    }
+    function closeModal(){
+        overlay.classList.remove('active');
+        document.body.style.overflow='';
+    }
+    function showStep(n){
+        step1.style.display = n===1?'block':'none';
+        step2.style.display = n===2?'block':'none';
+        step3.style.display = n===3?'block':'none';
+    }
+
+    if(openBtn) openBtn.addEventListener('click', openModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    overlay && overlay.addEventListener('click', function(e){if(e.target===overlay)closeModal();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay&&overlay.classList.contains('active'))closeModal();});
+
+    // PIN inputs — auto-advance and backspace
+    pinInputs.forEach(function(inp, idx){
+        inp.addEventListener('input', function(){
+            inp.value = inp.value.replace(/[^0-9]/g,'').slice(-1);
+            if(inp.value && idx < pinInputs.length-1) pinInputs[idx+1].focus();
+        });
+        inp.addEventListener('keydown', function(e){
+            if(e.key==='Backspace' && !inp.value && idx > 0) pinInputs[idx-1].focus();
+        });
+        inp.addEventListener('paste', function(e){
+            e.preventDefault();
+            var pasted = (e.clipboardData||window.clipboardData).getData('text').replace(/[^0-9]/g,'');
+            pinInputs.forEach(function(pi,i){ pi.value = pasted[i]||''; });
+            var last = Math.min(pasted.length, pinInputs.length) - 1;
+            if(last>=0) pinInputs[last].focus();
+        });
+    });
+
+    // PIN submit
+    var pinBtn = document.getElementById('pinSubmitBtn');
+    if(pinBtn) pinBtn.addEventListener('click', function(){
+        var entered = Array.from(pinInputs).map(function(i){return i.value;}).join('');
+        if(entered.length < 4){ pinError.textContent='Enter all 4 digits.'; return; }
+        if(entered !== REVIEW_PIN){
+            pinError.textContent='Incorrect password. Try again. ❌';
+            pinInputs.forEach(function(i){i.value='';});
+            pinInputs[0].focus();
+            return;
+        }
+        pinError.textContent='';
+        showStep(2);
+        // Reset form
+        document.getElementById('rv_name').value='';
+        document.getElementById('rv_role').value='';
+        document.getElementById('rv_text').value='';
+        document.getElementById('rv_charcount').textContent='0';
+        document.getElementById('reviewFormError').textContent='';
+        setStars(5);
+    });
+
+    // Star picker
+    function setStars(val){
+        selectedRating = val;
+        document.querySelectorAll('.star-pick').forEach(function(s){
+            s.classList.toggle('active', parseInt(s.dataset.val) <= val);
+        });
+    }
+    setStars(5);
+    document.querySelectorAll('.star-pick').forEach(function(s){
+        s.addEventListener('click', function(){ setStars(parseInt(s.dataset.val)); });
+        s.addEventListener('mouseenter', function(){
+            document.querySelectorAll('.star-pick').forEach(function(st){
+                st.classList.toggle('hover', parseInt(st.dataset.val) <= parseInt(s.dataset.val));
+            });
+        });
+        s.addEventListener('mouseleave', function(){
+            document.querySelectorAll('.star-pick').forEach(function(st){ st.classList.remove('hover'); });
+        });
+    });
+
+    // Char counter
+    var rvText = document.getElementById('rv_text');
+    if(rvText) rvText.addEventListener('input', function(){
+        document.getElementById('rv_charcount').textContent = rvText.value.length;
+    });
+
+    // Done btn
+    var doneBtn = document.getElementById('reviewDoneBtn');
+    if(doneBtn) doneBtn.addEventListener('click', closeModal);
+
+    // Submit — actual Firebase write is in module script below
+    var reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
+    if(reviewSubmitBtn) reviewSubmitBtn.addEventListener('click', function(){
+        var name = document.getElementById('rv_name').value.trim();
+        var role = document.getElementById('rv_role').value.trim();
+        var text = document.getElementById('rv_text').value.trim();
+        var err  = document.getElementById('reviewFormError');
+        if(!name){ err.textContent='Please enter your name.'; return; }
+        if(!text || text.length < 10){ err.textContent='Please write at least 10 characters.'; return; }
+        err.textContent='';
+        // Dispatch to module script via custom event
+        document.dispatchEvent(new CustomEvent('submitReview', {
+            detail: { name: name, role: role || 'Client', rating: selectedRating, text: text }
+        }));
+    });
+})();
+
+/* ── POPUP LOGIC ── */
+var popupOverlay=document.getElementById('popupOverlay');
+var popupImgContainer=document.getElementById('popupImgContainer');
+var popupGallery=document.getElementById('popupGallery');
+var DEFAULT_PROJECT_IMAGE='photos/main.png';
+var popupImages=[],popupImageIndex=0;
+function normalizeImageList(value){if(Array.isArray(value))return value.filter(Boolean);if(typeof value==='string'){var t=value.trim();if(!t)return[];try{var p=JSON.parse(t);if(Array.isArray(p))return p.filter(Boolean);}catch(_){}return t.split(',').map(function(v){return v.trim();}).filter(Boolean);}return[];}
+function showPopupImage(index,title){if(!popupImages.length)return;var si=(index+popupImages.length)%popupImages.length;popupImageIndex=si;var hasNav=popupImages.length>1;popupImgContainer.innerHTML='<img class="popup-img" src="'+popupImages[popupImageIndex]+'" alt="'+(title||'Project')+'" onerror="this.parentElement.innerHTML=\'<div class=&quot;popup-img-placeholder&quot;>🚀</div>\'">'+(hasNav?'<button class="popup-nav popup-nav-prev" data-dir="prev"><i class="fas fa-chevron-left"></i></button><button class="popup-nav popup-nav-next" data-dir="next"><i class="fas fa-chevron-right"></i></button>':'');popupGallery.querySelectorAll('.popup-thumb').forEach(function(t,i){t.classList.toggle('active',i===popupImageIndex);});}
+function renderPopupImages(images,title){popupImages=images.length?images:[DEFAULT_PROJECT_IMAGE];popupImageIndex=0;showPopupImage(0,title);if(popupImages.length<=1){popupGallery.style.display='none';popupGallery.innerHTML='';return;}popupGallery.style.display='grid';popupGallery.innerHTML=popupImages.map(function(img,i){return'<img class="popup-thumb '+(i===0?'active':'')+'" data-index="'+i+'" src="'+img+'" alt="'+(title||'Project')+' '+(i+1)+'" onerror="this.style.display=\'none\'">';}).join('');popupGallery.querySelectorAll('.popup-thumb').forEach(function(thumb){thumb.addEventListener('click',function(){showPopupImage(Number(thumb.dataset.index||0),document.getElementById('popupTitle').textContent);});});}
+popupImgContainer.addEventListener('click',function(e){var navBtn=e.target.closest('.popup-nav');if(!navBtn||!popupImages.length)return;var title=document.getElementById('popupTitle').textContent||'Project';if(navBtn.dataset.dir==='prev')showPopupImage(popupImageIndex-1,title);if(navBtn.dataset.dir==='next')showPopupImage(popupImageIndex+1,title);});
+document.getElementById('popupClose').addEventListener('click',closePopup);
+popupOverlay.addEventListener('click',function(e){if(e.target===popupOverlay)closePopup();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePopup();if(!popupOverlay.classList.contains('active'))return;var title=document.getElementById('popupTitle').textContent||'Project';if(e.key==='ArrowLeft')showPopupImage(popupImageIndex-1,title);if(e.key==='ArrowRight')showPopupImage(popupImageIndex+1,title);});
+function closePopup(){popupOverlay.classList.remove('active');document.body.style.overflow='';}
+function openPopup(data){
+    document.getElementById('popupTitle').textContent=data.title||'';
+    document.getElementById('popupType').textContent=data.type||'';
+    var sdEl=document.getElementById('popupShortDesc');sdEl.textContent=data.shortDesc||'';sdEl.style.display=data.shortDesc?'block':'none';
+    var dEl=document.getElementById('popupDesc');dEl.textContent=data.desc||'';dEl.style.display=data.desc?'block':'none';
+    var fEl=document.getElementById('popupFeatures');var flEl=document.getElementById('popupFeaturesList');var features=data.features||[];
+    if(features.length){fEl.style.display='block';flEl.innerHTML=features.map(function(f){return'<li style="display:flex;align-items:flex-start;gap:0.5rem;color:var(--gray);font-size:0.95rem;"><span style="color:var(--green);flex-shrink:0;">✓</span>'+f+'</li>';}).join('');}
+    else{fEl.style.display='none';flEl.innerHTML='';}
+    var techArr=data.tech?data.tech.split(','):[];
+    document.getElementById('popupTech').innerHTML=techArr.map(function(t){return'<span>'+t.trim()+'</span>';}).join('');
+    var demoBtn=document.getElementById('popupDemoBtn');var codeBtn=document.getElementById('popupCodeBtn');
+    demoBtn.href=data.demo||'#';codeBtn.href=data.code||'#';
+    demoBtn.style.display=(data.demo&&data.demo!=='#')?'':'none';codeBtn.style.display=(data.code&&data.code!=='#')?'':'none';
+    var images=normalizeImageList(data.images);if(!images.length&&data.img)images=[data.img];renderPopupImages(images,data.title||'Project');
+    popupOverlay.classList.add('active');document.body.style.overflow='hidden';
+}
+</script>
+
+<!-- ══════════ FIREBASE ══════════ -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getFirestore, collection, getDocs, addDoc, query, orderBy, limit, where, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyADglpxL2r1WAO9ibWG2FFwLMzaWm7zMrM",
+    authDomain: "sanketh-portfolio.firebaseapp.com",
+    projectId: "sanketh-portfolio",
+    storageBucket: "sanketh-portfolio.firebasestorage.app",
+    messagingSenderId: "569043022670",
+    appId: "1:569043022670:web:2cf12217fc00d49cc8641f"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function normalizeImageList(value){if(Array.isArray(value))return value.filter(Boolean);if(typeof value==='string'){var t=value.trim();if(!t)return[];try{var p=JSON.parse(t);if(Array.isArray(p))return p.filter(Boolean);}catch(_){}return t.split(',').map(v=>v.trim()).filter(Boolean);}return[];}
+
+/* ── FEATURED PROJECTS ── */
+function buildCard(p, num) {
+    const tech = Array.isArray(p.tech) ? p.tech : (p.tech ? [p.tech] : []);
+    const techBadges = tech.slice(0, 4).map(t=>`<span class="tech-badge">${esc(t)}</span>`).join('');
+    const techAll = tech.join(',');
+    const numStr = String(num).padStart(2,'0');
+    const images = normalizeImageList(p.images).length ? normalizeImageList(p.images) : normalizeImageList(p.photos);
+    const img = p.image || (images[0] || 'photos/main.png');
+    const allImages = images.length ? images : [img];
+    const imagesJson = JSON.stringify(allImages);
+    const cats = Array.isArray(p.categories) ? p.categories.join(' ') : (p.categories||'');
+    const features = Array.isArray(p.features) ? p.features : [];
+    const featuresJson = JSON.stringify(features);
+    const shortDesc = p.shortDesc || (p.description||'').substring(0,110) + (p.description && p.description.length > 110 ? '...' : '');
+    const hasDemo = p.demoUrl && p.demoUrl !== '#';
+    const hasCode = p.codeUrl && p.codeUrl !== '#';
+    return `<div class="project-card reveal"
+        data-category="${esc(cats)}"
+        data-title="${esc(p.title||'')}"
+        data-short-desc="${esc(p.shortDesc||'')}"
+        data-desc="${esc(p.description||'')}"
+        data-features="${esc(featuresJson)}"
+        data-tech="${esc(techAll)}"
+        data-type="${esc(p.type||'Project')}"
+        data-img="${esc(img)}"
+        data-images="${esc(imagesJson)}"
+        data-demo="${esc(p.demoUrl||'#')}"
+        data-code="${esc(p.codeUrl||'#')}"
+        style="animation:fadeUp 0.5s ease ${(num-1)*0.1}s both;">
+        <div class="project-img">
+            <img src="${esc(img)}" alt="${esc(p.title||'')}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x220/001133/00a8ff?text=Project'">
+            <div class="project-img-overlay"></div>
+            <div class="project-num">${numStr}</div>
+            <div class="project-type-badge" style="position:absolute;top:0.8rem;left:0.8rem;background:rgba(0,102,255,0.8);color:white;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.72rem;font-family:'Space Mono',monospace;letter-spacing:1px;backdrop-filter:blur(8px);border:1px solid rgba(0,168,255,0.4);">${esc(p.type||'Project')}</div>
+        </div>
+        <div class="project-body">
+            <h3>${esc(p.title||'Untitled')}</h3>
+            <p>${esc(shortDesc)}</p>
+            <div class="tech-badges">${techBadges}</div>
+            <div class="project-links-row">
+                ${hasDemo?`<a href="${esc(p.demoUrl)}" class="link-demo" target="_blank"><i class="fas fa-eye"></i> Demo</a>`:''}
+                ${hasCode?`<a href="${esc(p.codeUrl)}" class="link-code" target="_blank"><i class="fab fa-github"></i> Code</a>`:''}
+            </div>
+        </div>
+    </div>`;
+}
+
+async function loadFeaturedProjects() {
+    const grid = document.getElementById('featuredGrid');
+    try {
+        let snap;
+        try {
+            const q = query(collection(db,'projects'), where('featured','==',true), orderBy('order','asc'), limit(6));
+            snap = await getDocs(q);
+        } catch(_) {
+            const q = query(collection(db,'projects'), orderBy('order','asc'), limit(6));
+            snap = await getDocs(q);
+        }
+        grid.innerHTML = '';
+        if (snap.empty) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray);font-family:\'Space Mono\',monospace;">No projects yet 😅</div>';
+            return;
+        }
+        let count = 0;
+        snap.forEach(doc => { count++; grid.innerHTML += buildCard(doc.data(), count); });
+        // Attach popups
+        grid.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', e => {
+                if (e.target.closest('a')) return;
+                var features=[]; try{features=card.dataset.features?JSON.parse(card.dataset.features):[];}catch(_){}
+                if (typeof openPopup==='function') openPopup({title:card.dataset.title,shortDesc:card.dataset.shortDesc,desc:card.dataset.desc,features,type:card.dataset.type,img:card.dataset.img,images:card.dataset.images,demo:card.dataset.demo,code:card.dataset.code,tech:card.dataset.tech});
+            });
+        });
+        // Re-observe for reveal
+        if (typeof revealObs !== 'undefined') grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+        // Re-attach cursor hover
+        grid.querySelectorAll('a,button,.project-card').forEach(el=>{el.addEventListener('mouseenter',()=>{if(cursor){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';}});el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';}});});
+    } catch(err) {
+        console.error(err);
+        grid.innerHTML = '<div class="firebase-error" style="grid-column:1/-1;">⚠️ Could not load projects.</div>';
+    }
+}
+
+/* ── REVIEWS ── */
+function buildReview(r, index) {
+    const stars = '★'.repeat(Math.min(5, Math.max(1, r.rating || 5)));
+    const emptyStars = '☆'.repeat(5 - (r.rating || 5));
+    const initials = (r.name||'A').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    // Gradient per card
+    const gradients = [
+        'linear-gradient(135deg,#0066ff,#00ff88)',
+        'linear-gradient(135deg,#7c3aed,#00a8ff)',
+        'linear-gradient(135deg,#ff6b35,#f7c59f)',
+        'linear-gradient(135deg,#00b4d8,#0077b6)',
+        'linear-gradient(135deg,#e91e8c,#ff6b35)',
+        'linear-gradient(135deg,#43e97b,#38f9d7)',
+    ];
+    const grad = gradients[index % gradients.length];
+    return `<div class="review-card reveal" style="animation:fadeUp 0.5s ease ${index*0.1}s both;">
+        <div class="review-stars">${stars}<span style="color:rgba(255,215,0,0.3)">${emptyStars}</span></div>
+        <p class="review-text">${esc(r.text||r.review||r.message||'')}</p>
+        <div class="review-author">
+            <div class="review-avatar" style="background:${grad};">${initials}</div>
+            <div class="review-author-info">
+                <h4>${esc(r.name||'Anonymous')}</h4>
+                <span>${esc(r.role||r.position||r.company||'Client')}</span>
+            </div>
+        </div>
+    </div>`;
+}
+
+async function loadReviews() {
+    const grid = document.getElementById('reviewsGrid');
+    try {
+        const q = query(collection(db,'reviews'), orderBy('createdAt','desc'));
+        const snap = await getDocs(q);
+        grid.innerHTML = '';
+        if (snap.empty) {
+            // Show placeholder reviews if none in DB
+            const placeholders = [
+                {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
+                {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
+                {name:'Mike Torres',role:'Small Business Owner',rating:5,text:'Our website completely transformed after Sanketh rebuilt it. Traffic and conversions went through the roof!'},
+            ];
+            grid.innerHTML = placeholders.map((r,i)=>buildReview(r,i)).join('');
+            if(typeof revealObs!=='undefined')grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+            return;
+        }
+        let idx = 0;
+        snap.forEach(doc => { grid.innerHTML += buildReview(doc.data(), idx++); });
+        if(typeof revealObs!=='undefined')grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+    } catch(err) {
+        console.error('Reviews error:', err);
+        // Fallback to placeholder reviews on error
+        const placeholders = [
+            {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
+            {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
+            {name:'Mike Torres',role:'Small Business Owner',rating:5,text:'Our website completely transformed after Sanketh rebuilt it. Traffic and conversions went through the roof!'},
+        ];
+        grid.innerHTML = placeholders.map((r,i)=>buildReview(r,i)).join('');
+        if(typeof revealObs!=='undefined')grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+    }
+}
+
+/* ── SUBMIT REVIEW ── */
+document.addEventListener('submitReview', async function(e) {
+    var btn = document.getElementById('reviewSubmitBtn');
+    var orig = btn ? btn.innerHTML : '';
+    try {
+        if(btn){ btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Submitting...'; btn.disabled=true; }
+        await addDoc(collection(db, 'reviews'), {
+            name:      e.detail.name,
+            role:      e.detail.role,
+            rating:    e.detail.rating,
+            text:      e.detail.text,
+            createdAt: serverTimestamp()
+        });
+        // Show success step
+        var s2 = document.getElementById('reviewStep2');
+        var s3 = document.getElementById('reviewStep3');
+        if(s2) s2.style.display='none';
+        if(s3) s3.style.display='block';
+        // Reload reviews
+        await loadReviews();
+    } catch(err) {
+        console.error('Review submit error:', err);
+        var errEl = document.getElementById('reviewFormError');
+        if(errEl) errEl.textContent = '❌ Failed to submit. Please try again.';
+    } finally {
+        if(btn){ btn.innerHTML=orig; btn.disabled=false; }
+    }
+});
+
+loadFeaturedProjects();
+loadReviews();
+</script>
+
+</body>
+</html>

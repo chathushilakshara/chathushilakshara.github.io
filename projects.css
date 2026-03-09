@@ -1,0 +1,57 @@
+/* ========================================
+   PROJECTS.CSS — Projects Page Specific
+   ======================================== */
+
+.projects-hero {
+    padding: 10rem 2rem 4rem; text-align: center;
+    position: relative; z-index: 10;
+}
+
+/* Filter bar */
+.filter-bar {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    justify-content: center; margin-bottom: 3.5rem;
+    padding: 0 2rem; position: relative; z-index: 10;
+}
+.filter-btn {
+    padding: 0.55rem 1.4rem; border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-muted); font-family: 'Space Mono', monospace;
+    font-size: 0.78rem; letter-spacing: 1px;
+    cursor: none; transition: all 0.3s;
+}
+.filter-btn:hover { border-color: var(--blue-bright); color: var(--blue-bright); background: rgba(0,168,255,0.06); }
+.filter-btn.active {
+    background: var(--blue); border-color: var(--blue);
+    color: white; box-shadow: 0 0 20px rgba(0,102,255,0.4);
+}
+
+/* Projects grid */
+.all-projects-section { position: relative; z-index: 10; padding: 0 2rem 6rem; }
+.all-projects-grid {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem;
+}
+
+/* Project card type badge */
+.project-type-badge {
+    position: absolute; top: 0.8rem; left: 0.8rem;
+    background: rgba(0,102,255,0.85); color: white;
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+    font-size: 0.7rem; font-family: 'Space Mono', monospace;
+    letter-spacing: 1px; backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,168,255,0.4);
+}
+
+/* ── RESPONSIVE PROJECTS ── */
+@media (max-width: 768px) {
+    .all-projects-grid { grid-template-columns: 1fr; }
+    .projects-hero { padding: 8rem 1.5rem 3rem; }
+    .all-projects-section { padding: 0 1.2rem 4rem; }
+    .filter-bar { padding: 0 1.2rem; }
+}
+@media (max-width: 480px) {
+    .all-projects-grid { grid-template-columns: 1fr; }
+}
+

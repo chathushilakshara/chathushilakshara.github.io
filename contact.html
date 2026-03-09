@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sanketh Narangoda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<canvas id="bgCanvas"></canvas>
+
+<!-- ── BADMINTON WIDGET ── -->
+<div id="badminton-widget" title="Click to scroll!">
+    <div class="badminton-container" id="badmintonBtn">
+        <div class="racket-icon" id="racketIcon">🏸</div>
+        <div class="racket-label" id="racketLabel">scroll ↓</div>
+    </div>
+</div>
+<div id="shuttlecock">🏸</div>
+
+<!-- Header -->
+<header>
+    <nav>
+        <a href="index.html" class="logo"><span>&lt;</span>Sanketh<span>/&gt;</span></a>
+        <button class="theme-bulb" id="themeBulb" aria-label="Toggle theme">
+            <i class="fas fa-lightbulb"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="projects.html"><i class="fas fa-rocket"></i> Projects</a></li>
+            <li><a href="contact.html" class="nav-contact-btn active"><i class="fas fa-satellite-dish"></i> Let's talk </a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="contact-hero">
+    <h1 class="section-title reveal">Let's <span class="gradient-text">Connect</span> 🤙</h1>
+    <div class="section-line"></div>
+    <p class="section-subtitle reveal" style="margin-bottom:0;">I'm always open to new opportunities, collaborations, and exciting ideas! 💡</p>
+</div>
+
+<!-- Main Grid -->
+<div class="contact-grid">
+
+    <!-- Left: Info + Social -->
+    <div class="contact-info-col reveal">
+        <h3>📬 Get In Touch</h3>
+
+       <a href="mailto:jaindunarangoda@gmail.com" class="contact-info-item contact-email">
+    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+    <div>
+        <h4>Email</h4>
+        <p>jaindunarangoda@gmail.com</p>
+    </div>
+</a>
+
+        <div class="contact-info-item contact-location">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h4>Location 📍</h4><p>Gampaha, Sri Lanka 🇱🇰</p></div>
+        </div>
+
+        <div class="contact-info-item contact-status">
+            <div class="contact-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div><h4>Status 💼</h4><p style="color:var(--green);">● Open to opportunities</p></div>
+        </div>
+
+        <!-- Social links -->
+        <div class="social-section">
+            <h3>🌐 Find Me Online</h3>
+            <div class="social-links-grid">
+
+                <a href="https://github.com/" target="_blank" class="social-link-card s-github">
+                    <div class="s-icon"><i class="fab fa-github"></i></div>
+                    <div>
+                        <div class="s-name">GitHub 💻</div>
+                        <div class="s-handle">@sanketh</div>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/" target="_blank" class="social-link-card s-linkedin">
+                    <div class="s-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <div>
+                        <div class="s-name">LinkedIn 💼</div>
+                        <div class="s-handle">Sanketh Narangoda</div>
+                    </div>
+                </a>
+
+                <a href="https://instagram.com/" target="_blank" class="social-link-card s-instagram">
+                    <div class="s-icon"><i class="fab fa-instagram"></i></div>
+                    <div>
+                        <div class="s-name">Instagram 📸</div>
+                        <div class="s-handle">@mr_sunny__</div>
+                    </div>
+                </a>
+
+
+                <a href="https://wa.me/94XXXXXXXXX" target="_blank" class="social-link-card s-whatsapp">
+                    <div class="s-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <div class="s-name">WhatsApp 💬</div>
+                        <div class="s-handle">Chat with me!</div>
+                    </div>
+                </a>
+
+                <a href="https://t.me/sanketh" target="_blank" class="social-link-card s-telegram">
+                    <div class="s-icon"><i class="fab fa-telegram"></i></div>
+                    <div>
+                        <div class="s-name">Telegram ✈️</div>
+                        <div class="s-handle">@sanketh</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Contact form -->
+    <div class="contact-form-col reveal">
+        <div class="contact-form" id="contactFormWrap">
+            <h3>✉️ Send a Message</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Name 👤</label>
+                    <input type="text" name="from_name" id="from_name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Email 📧</label>
+                    <input type="email" name="from_email" id="from_email" required placeholder="your@email.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Subject 📋</label>
+                <input type="text" name="subject" id="subject" placeholder="Project inquiry, collaboration, etc.">
+            </div>
+
+            <div class="form-group">
+                <label>Message 💬</label>
+                <textarea name="message" id="message" required placeholder="Tell me about your project or idea... I love exciting stuff! 🚀"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="submitBtn" onclick="sendMessage()" style="width:100%;justify-content:center;">
+                <i class="fas fa-paper-plane"></i> Send Message 🚀
+            </button>
+            <div id="formMessage" style="display:none;margin-top:1rem;padding:1rem;border-radius:8px;text-align:center;font-family:'Space Mono',monospace;font-size:0.85rem;"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+/* ── BADMINTON WIDGET ── */
+(function(){
+    var scrolledDown=false;
+    var btn=document.getElementById('badmintonBtn');
+    var racketLabel=document.getElementById('racketLabel');
+    var shuttle=document.getElementById('shuttlecock');
+    var widgetEl=document.getElementById('badminton-widget');
+    if(!btn)return;
+    function fireShuttle(fromBottom){
+        var rect=widgetEl.getBoundingClientRect();
+        var startX=rect.left+rect.width/2-12;
+        var startY=fromBottom?rect.top:rect.top+rect.height;
+        var endY=fromBottom?-100:window.innerHeight+100;
+        shuttle.style.left=startX+'px';shuttle.style.top=startY+'px';
+        shuttle.style.display='block';shuttle.classList.remove('flying');
+        shuttle.offsetWidth;shuttle.classList.add('flying');
+        var start=null,dur=650;
+        function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);
+        shuttle.style.top=(startY+(endY-startY)*p)+'px';
+        if(p<1)requestAnimationFrame(step);
+        else{shuttle.style.display='none';shuttle.classList.remove('flying');}}
+        requestAnimationFrame(step);
+    }
+    btn.addEventListener('click',function(){
+        if(!scrolledDown){
+            fireShuttle(true);
+            var target=document.querySelector('.contact-grid');
+            if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+            scrolledDown=true;racketLabel.textContent='scroll ↑';
+            btn.querySelector('.racket-icon').style.transform='scaleY(-1)';
+        }else{
+            fireShuttle(false);window.scrollTo({top:0,behavior:'smooth'});
+            scrolledDown=false;racketLabel.textContent='scroll ↓';
+            btn.querySelector('.racket-icon').style.transform='';
+        }
+    });
+    window.addEventListener('scroll',function(){
+        var atBottom=window.scrollY>(document.documentElement.scrollHeight/2)*0.4;
+        if(atBottom!==scrolledDown){
+            scrolledDown=atBottom;
+            racketLabel.textContent=scrolledDown?'scroll ↑':'scroll ↓';
+            btn.querySelector('.racket-icon').style.transform=scrolledDown?'scaleY(-1)':'';
+        }
+    });
+})();
+
+/* ── CURSOR ── */
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursorFollower');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cursor.style.left=(mx-6)+'px';cursor.style.top=(my-6)+'px';});
+(function animCursor(){fx+=(mx-fx)*0.12;fy+=(my-fy)*0.12;follower.style.left=(fx-18)+'px';follower.style.top=(fy-18)+'px';requestAnimationFrame(animCursor);})();
+
+/* ── THEME ── */
+var themeBulb=document.getElementById('themeBulb');
+var THEME_KEY='portfolio-theme';
+function applyTheme(mode){var isLight=mode==='light';document.body.classList.toggle('light-mode',isLight);if(themeBulb){themeBulb.innerHTML=isLight?'<i class="fas fa-sun"></i>':'<i class="fas fa-lightbulb"></i>';}}
+applyTheme(localStorage.getItem(THEME_KEY)==='light'?'light':'dark');
+if(themeBulb){themeBulb.addEventListener('click',function(){var next=document.body.classList.contains('light-mode')?'dark':'light';applyTheme(next);localStorage.setItem(THEME_KEY,next);});}
+
+/* ── HAMBURGER ── */
+var hamburger=document.getElementById('hamburger');
+var navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
+
+/* ── HOVER CURSOR ── */
+document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';});
+    el.addEventListener('mouseleave',function(){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';});
+});
+
+/* ── CANVAS ── */
+var canvas=document.getElementById('bgCanvas');
+var ctx=canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+var stars=[];for(var i=0;i<120;i++)stars.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*1.5+0.3,speed:Math.random()*0.3+0.05});
+var tick=0;
+(function drawBG(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle='rgba(0,102,255,0.04)';ctx.lineWidth=1;
+    for(var x=0;x<canvas.width;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+    for(var y=0;y<canvas.height;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+    stars.forEach(function(s){ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(0,168,255,'+(0.3+0.7*Math.abs(Math.sin(tick*0.01+s.x)))+')';ctx.fill();s.y+=s.speed;if(s.y>canvas.height){s.y=0;s.x=Math.random()*canvas.width;}});
+    tick++;requestAnimationFrame(drawBG);
+})();
+
+/* ── REVEAL ── */
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting)setTimeout(function(){en.target.classList.add('visible');},i*80);});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+
+/* ── EMAILJS ── */
+(function(){emailjs.init('Wwmn45bYha1bxRWLf');})();
+
+function sendMessage() {
+    var name=document.getElementById('from_name').value.trim();
+    var email=document.getElementById('from_email').value.trim();
+    var msg=document.getElementById('message').value.trim();
+    var subject=document.getElementById('subject').value.trim();
+    var btn=document.getElementById('submitBtn');
+    var formMsg=document.getElementById('formMessage');
+
+    if (!name||!email||!msg) {
+        formMsg.style.cssText='display:block;background:rgba(255,70,70,0.1);border:1px solid #ff4444;color:#ff4444;padding:1rem;border-radius:8px;text-align:center;';
+        formMsg.textContent='⚠️ Please fill in all required fields!'; return;
+    }
+
+    var orig=btn.innerHTML;
+    btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending... 🚀';
+    btn.disabled=true; formMsg.style.display='none';
+
+    emailjs.send('service_lsvihba','template_60tivck',{
+        from_name:name, from_email:email, message:(subject?'Subject: '+subject+'\n\n':'')+msg, to_name:'Sanketh'
+    }).then(function(){
+        formMsg.style.cssText='display:block;background:rgba(0,255,136,0.1);border:1px solid #00ff88;color:#00ff88;padding:1rem;border-radius:8px;text-align:center;';
+        formMsg.textContent='✅ Message sent! I\'ll get back to you soon. 🎉';
+        document.getElementById('from_name').value='';
+        document.getElementById('from_email').value='';
+        document.getElementById('subject').value='';
+        document.getElementById('message').value='';
+        setTimeout(function(){formMsg.style.display='none';},5000);
+    },function(){
+        formMsg.style.cssText='display:block;background:rgba(255,70,70,0.1);border:1px solid #ff4444;color:#ff4444;padding:1rem;border-radius:8px;text-align:center;';
+        formMsg.textContent='❌ Failed to send. Please email me directly at jaindunarangoda@gmail.com';
+    }).finally(function(){btn.innerHTML=orig;btn.disabled=false;});
+}
+</script>
+
+</body>
+</html>
