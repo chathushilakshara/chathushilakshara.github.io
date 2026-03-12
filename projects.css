@@ -1,13 +1,11 @@
-/* ========================================
-   PROJECTS.CSS — Projects Page Specific
-   ======================================== */
+
 
 .projects-hero {
     padding: 10rem 2rem 4rem; text-align: center;
     position: relative; z-index: 10;
 }
 
-/* Filter bar */
+
 .filter-bar {
     display: flex; flex-wrap: wrap; gap: 0.8rem;
     justify-content: center; margin-bottom: 3.5rem;
@@ -34,7 +32,7 @@
     display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem;
 }
 
-/* Project card type badge */
+
 .project-type-badge {
     position: absolute; top: 0.8rem; left: 0.8rem;
     background: rgba(0,102,255,0.85); color: white;
@@ -44,7 +42,7 @@
     border: 1px solid rgba(0,168,255,0.4);
 }
 
-/* ── RESPONSIVE PROJECTS ── */
+
 @media (max-width: 768px) {
     .all-projects-grid { grid-template-columns: 1fr; }
     .projects-hero { padding: 8rem 1.5rem 3rem; }
