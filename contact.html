@@ -16,7 +16,7 @@
 <div class="cursor-follower" id="cursorFollower"></div>
 <canvas id="bgCanvas"></canvas>
 
-<!-- ── BADMINTON WIDGET ── -->
+<!--  BADMINTON WIDGET  -->
 <div id="badminton-widget" title="Click to scroll!">
     <div class="badminton-container" id="badmintonBtn">
         <div class="racket-icon" id="racketIcon">🏸</div>
@@ -25,7 +25,7 @@
 </div>
 <div id="shuttlecock">🏸</div>
 
-<!-- Header -->
+
 <header>
     <nav>
         <a href="index.html" class="logo"><span>&lt;</span>Sanketh<span>/&gt;</span></a>
@@ -49,10 +49,10 @@
     <p class="section-subtitle reveal" style="margin-bottom:0;">I'm always open to new opportunities, collaborations, and exciting ideas! 💡</p>
 </div>
 
-<!-- Main Grid -->
+
 <div class="contact-grid">
 
-    <!-- Left: Info + Social -->
+  
     <div class="contact-info-col reveal">
         <h3>📬 Get In Touch</h3>
 
@@ -76,7 +76,7 @@
             <div><h4>Status 💼</h4><p style="color:var(--green);">● Open to opportunities</p></div>
         </div>
 
-        <!-- Social links -->
+        
         <div class="social-section">
             <h3>🌐 Find Me Online</h3>
             <div class="social-links-grid">
@@ -163,7 +163,7 @@
 </div>
 
 <script>
-/* ── BADMINTON WIDGET ── */
+/*  BADMINTON WIDGET  */
 (function(){
     var scrolledDown=false;
     var btn=document.getElementById('badmintonBtn');
@@ -209,32 +209,32 @@
     });
 })();
 
-/* ── CURSOR ── */
+
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
 let mx=0,my=0,fx=0,fy=0;
 document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cursor.style.left=(mx-6)+'px';cursor.style.top=(my-6)+'px';});
 (function animCursor(){fx+=(mx-fx)*0.12;fy+=(my-fy)*0.12;follower.style.left=(fx-18)+'px';follower.style.top=(fy-18)+'px';requestAnimationFrame(animCursor);})();
 
-/* ── THEME ── */
+
 var themeBulb=document.getElementById('themeBulb');
 var THEME_KEY='portfolio-theme';
 function applyTheme(mode){var isLight=mode==='light';document.body.classList.toggle('light-mode',isLight);if(themeBulb){themeBulb.innerHTML=isLight?'<i class="fas fa-sun"></i>':'<i class="fas fa-lightbulb"></i>';}}
 applyTheme(localStorage.getItem(THEME_KEY)==='light'?'light':'dark');
 if(themeBulb){themeBulb.addEventListener('click',function(){var next=document.body.classList.contains('light-mode')?'dark':'light';applyTheme(next);localStorage.setItem(THEME_KEY,next);});}
 
-/* ── HAMBURGER ── */
+
 var hamburger=document.getElementById('hamburger');
 var navLinks=document.getElementById('navLinks');
 hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
 
-/* ── HOVER CURSOR ── */
+
 document.querySelectorAll('a,button').forEach(function(el){
     el.addEventListener('mouseenter',function(){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';});
     el.addEventListener('mouseleave',function(){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';});
 });
 
-/* ── CANVAS ── */
+
 var canvas=document.getElementById('bgCanvas');
 var ctx=canvas.getContext('2d');
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
@@ -250,11 +250,11 @@ var tick=0;
     tick++;requestAnimationFrame(drawBG);
 })();
 
-/* ── REVEAL ── */
+
 var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting)setTimeout(function(){en.target.classList.add('visible');},i*80);});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
-/* ── EMAILJS ── */
+/*  EMAILJS  */
 (function(){emailjs.init('Wwmn45bYha1bxRWLf');})();
 
 function sendMessage() {
