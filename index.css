@@ -1,8 +1,4 @@
-/* ========================================
-   INDEX.CSS — Home Page Specific
-   ======================================== */
 
-/* ── HERO ── */
 .hero {
     min-height: 100vh;
     display: grid;
@@ -111,7 +107,7 @@
     background: rgba(255,255,255,0.1);
 }
 
-/* ── HERO VISUAL ── */
+
 .hero-visual {
     display: flex;
     flex-direction: column;
@@ -235,7 +231,7 @@
     50% { transform: translateY(-5px); }
 }
 
-/* ── ABOUT SECTION ── */
+
 .about-section {
     position: relative;
     z-index: 10;
@@ -317,7 +313,7 @@
 }
 .about-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
 
-/* ── PROJECTS PREVIEW ── */
+
 .projects-section {
     position: relative;
     z-index: 10;
@@ -335,7 +331,7 @@
     gap: 2rem;
 }
 
-/* ── REVIEWS SECTION ── */
+
 .reviews-section-wrap {
     position: relative;
     z-index: 10;
@@ -344,7 +340,7 @@
     background: linear-gradient(180deg, transparent, rgba(0,102,255,0.02));
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 1024px) {
     .hero {
         grid-template-columns: 1fr;
