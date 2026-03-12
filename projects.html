@@ -15,7 +15,7 @@
 <div class="cursor-follower" id="cursorFollower"></div>
 <canvas id="bgCanvas"></canvas>
 
-<!-- ── BADMINTON WIDGET ── -->
+<!--  BADMINTON  -->
 <div id="badminton-widget" title="Click to scroll!">
     <div class="badminton-container" id="badmintonBtn">
         <div class="racket-icon" id="racketIcon">🏸</div>
@@ -24,7 +24,7 @@
 </div>
 <div id="shuttlecock">🏸</div>
 
-<!-- Header -->
+
 <header>
     <nav>
         <a href="index.html" class="logo"><span>&lt;</span>Sanketh<span>/&gt;</span></a>
@@ -57,7 +57,7 @@
     <button class="filter-btn" data-filter="fullstack">🔥 Full-Stack</button>
 </div>
 
-<!-- Projects grid -->
+
 <div class="all-projects-section">
     <div class="all-projects-grid" id="projectsGrid">
         <div class="projects-loading" style="grid-column:1/-1;">
@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<!-- Footer -->
+
 <footer>
     <div class="footer-logo"><span class="gradient-text">Sanketh</span> 👨‍💻</div>
 
@@ -81,7 +81,7 @@
     </div>
 </footer>
 
-<!-- PROJECT POPUP -->
+
 <div class="popup-overlay" id="popupOverlay">
     <div class="popup-card">
         <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
@@ -110,7 +110,7 @@
 </div>
 
 <script>
-/* ── BADMINTON WIDGET ── */
+
 (function(){
     var scrolledDown=false;
     var btn=document.getElementById('badmintonBtn');
@@ -156,26 +156,26 @@
     });
 })();
 
-/* ── CURSOR ── */
+
 const cursor=document.getElementById('cursor');
 const follower=document.getElementById('cursorFollower');
 let mx=0,my=0,fx=0,fy=0;
 document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cursor.style.left=(mx-6)+'px';cursor.style.top=(my-6)+'px';});
 (function animCursor(){fx+=(mx-fx)*0.12;fy+=(my-fy)*0.12;follower.style.left=(fx-18)+'px';follower.style.top=(fy-18)+'px';requestAnimationFrame(animCursor);})();
 
-/* ── THEME ── */
+
 var themeBulb=document.getElementById('themeBulb');
 var THEME_KEY='portfolio-theme';
 function applyTheme(mode){var isLight=mode==='light';document.body.classList.toggle('light-mode',isLight);if(themeBulb){themeBulb.innerHTML=isLight?'<i class="fas fa-sun"></i>':'<i class="fas fa-lightbulb"></i>';}}
 applyTheme(localStorage.getItem(THEME_KEY)==='light'?'light':'dark');
 if(themeBulb){themeBulb.addEventListener('click',function(){var next=document.body.classList.contains('light-mode')?'dark':'light';applyTheme(next);localStorage.setItem(THEME_KEY,next);});}
 
-/* ── HAMBURGER ── */
+
 var hamburger=document.getElementById('hamburger');
 var navLinks=document.getElementById('navLinks');
 hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
 
-/* ── CANVAS ── */
+
 var canvas=document.getElementById('bgCanvas');
 var ctx=canvas.getContext('2d');
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
@@ -184,11 +184,11 @@ var stars=[];for(var i=0;i<120;i++)stars.push({x:Math.random()*window.innerWidth
 var tick=0;
 (function drawBG(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='rgba(0,102,255,0.04)';ctx.lineWidth=1;for(var x=0;x<canvas.width;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}for(var y=0;y<canvas.height;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}stars.forEach(function(s){ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(0,168,255,'+(0.3+0.7*Math.abs(Math.sin(tick*0.01+s.x)))+')';ctx.fill();s.y+=s.speed;if(s.y>canvas.height){s.y=0;s.x=Math.random()*canvas.width;}});tick++;requestAnimationFrame(drawBG);})();
 
-/* ── REVEAL ── */
+
 var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting)setTimeout(function(){en.target.classList.add('visible');},i*80);});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
-/* ── HOVER CURSOR ── */
+
 function attachCursorHover() {
     document.querySelectorAll('a,button,.project-card').forEach(function(el){
         el.addEventListener('mouseenter',function(){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';});
@@ -197,7 +197,7 @@ function attachCursorHover() {
 }
 attachCursorHover();
 
-/* ── POPUP ── */
+
 var popupOverlay=document.getElementById('popupOverlay');
 var popupImgContainer=document.getElementById('popupImgContainer');
 var popupGallery=document.getElementById('popupGallery');
@@ -236,17 +236,17 @@ function openPopup(data) {
     document.getElementById('popupTitle').textContent = data.title||'';
     document.getElementById('popupType').textContent = data.type||'';
 
-    // Short desc
+    
     var shortDescEl = document.getElementById('popupShortDesc');
     shortDescEl.textContent = data.shortDesc||'';
     shortDescEl.style.display = data.shortDesc ? 'block' : 'none';
 
-    // Full description
+    
     var descEl = document.getElementById('popupDesc');
     descEl.textContent = data.desc||'';
     descEl.style.display = data.desc ? 'block' : 'none';
 
-    // Features list (optional array from Firebase)
+    
     var featuresEl = document.getElementById('popupFeatures');
     var featuresListEl = document.getElementById('popupFeaturesList');
     var features = data.features || [];
@@ -260,11 +260,10 @@ function openPopup(data) {
         featuresListEl.innerHTML = '';
     }
 
-    // Tech
+    
     var techArr = data.tech ? data.tech.split(',') : [];
     document.getElementById('popupTech').innerHTML = techArr.map(function(t){return '<span>'+t.trim()+'</span>';}).join('');
 
-    // Buttons — hide if no URL
     var demoBtn = document.getElementById('popupDemoBtn');
     var codeBtn = document.getElementById('popupCodeBtn');
     demoBtn.href = data.demo||'#';
@@ -281,7 +280,7 @@ function openPopup(data) {
     document.body.style.overflow = 'hidden';
 }
 
-/* ── FILTERS ── */
+
 function attachFilters() {
     var filterBtns = document.querySelectorAll('.filter-btn');
     var cards = document.querySelectorAll('.project-card');
@@ -303,9 +302,7 @@ function attachFilters() {
 }
 </script>
 
-<!-- ══════════════════════════════════════
-     FIREBASE — Load ALL projects
-     ══════════════════════════════════════ -->
+
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
@@ -390,7 +387,7 @@ async function loadAllProjects() {
         let count = 0;
         snap.forEach(doc => { count++; grid.innerHTML += buildCard(doc.data(), count); });
 
-        // No results placeholder stays hidden
+     
         document.getElementById('noResults') && (document.getElementById('noResults').style.display='none');
 
         // Attach filters
@@ -421,10 +418,10 @@ async function loadAllProjects() {
             });
         });
 
-        // Cursor hover
+        
         if (typeof attachCursorHover === 'function') attachCursorHover();
 
-        // Reveal observer
+        
         if (typeof revealObs !== 'undefined') {
             document.querySelectorAll('.project-card').forEach(el=>revealObs.observe(el));
         }
