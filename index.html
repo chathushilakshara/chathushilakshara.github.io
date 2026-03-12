@@ -27,7 +27,7 @@
 <div class="cursor-follower" id="cursorFollower"></div>
 <canvas id="bgCanvas"></canvas>
 
-<!-- ── BADMINTON WIDGET ── -->
+<!-- BADMINTON WIDGET  -->
 <div id="badminton-widget" title="Click to scroll!">
     <div class="badminton-container" id="badmintonBtn">
         <div class="racket-icon" id="racketIcon">🏸</div>
@@ -53,7 +53,7 @@
     </nav>
 </header>
 
-<!-- ══════════ HERO ══════════ -->
+<!--  HERO  -->
 <section class="hero" id="hero">
     <div class="hero-content">
         <div class="hero-badge reveal">
@@ -115,7 +115,7 @@
     </div>
 </section>
 
-<!-- ══════════ ABOUT ══════════ -->
+<!-- ABOUT  -->
 <section class="about-section" id="about">
     <div class="about-inner">
         <div class="reveal section-header-left">
@@ -167,7 +167,7 @@
     </div>
 </section>
 
-<!-- ══════════ PROJECTS PREVIEW ══════════ -->
+<!-- PROJECTS PREVIEW  -->
 <section class="projects-section" id="projects">
     <div class="projects-inner">
         <div class="reveal" style="text-align:center;margin-bottom:3rem;">
@@ -189,7 +189,7 @@
     </div>
 </section>
 
-<!-- ══════════ REVIEWS ══════════ -->
+<!-- REVIEWS  -->
 <section class="reviews-section-wrap" id="reviews">
     <div class="reviews-section">
         <div class="section-header reveal">
@@ -209,12 +209,12 @@
     </div>
 </section>
 
-<!-- ── REVIEW MODAL ── -->
+<!--  REVIEW MODAL  -->
 <div class="review-modal-overlay" id="reviewModalOverlay">
     <div class="review-modal">
         <button class="review-modal-close" id="reviewModalClose"><i class="fas fa-times"></i></button>
 
-        <!-- Step 1: Password -->
+        <!--  Password -->
         <div class="review-step" id="reviewStep1">
             <div class="review-modal-icon">🔐</div>
             <h3>Leave a Review</h3>
@@ -231,7 +231,7 @@
             </button>
         </div>
 
-        <!-- Step 2: Review Form -->
+        <!--  Review Form -->
         <div class="review-step" id="reviewStep2" style="display:none;">
             <div class="review-modal-icon">✍️</div>
             <h3>Your Review</h3>
@@ -267,7 +267,7 @@
             </button>
         </div>
 
-        <!-- Step 3: Success -->
+        <!-- Success -->
         <div class="review-step" id="reviewStep3" style="display:none;">
             <div class="review-modal-icon" style="font-size:3.5rem;">🎉</div>
             <h3>Thank You!</h3>
@@ -339,7 +339,7 @@ document.querySelectorAll('a,button').forEach(function(el){
     el.addEventListener('mouseleave',function(){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';});
 });
 
-/* ── CANVAS ── */
+
 var canvas=document.getElementById('bgCanvas');
 var ctx=canvas.getContext('2d');
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
@@ -348,11 +348,11 @@ var stars=[];for(var i=0;i<120;i++)stars.push({x:Math.random()*window.innerWidth
 var tick=0;
 (function drawBG(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='rgba(0,102,255,0.04)';ctx.lineWidth=1;for(var x=0;x<canvas.width;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}for(var y=0;y<canvas.height;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}stars.forEach(function(s){ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(0,168,255,'+(0.3+0.7*Math.abs(Math.sin(tick*0.01+s.x)))+')';ctx.fill();s.y+=s.speed;if(s.y>canvas.height){s.y=0;s.x=Math.random()*canvas.width;}});tick++;requestAnimationFrame(drawBG);})();
 
-/* ── REVEAL ── */
+
 var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting)setTimeout(function(){en.target.classList.add('visible');},i*80);});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
-/* ── TYPED TEXT ── */
+
 var phrases=['Full-Stack Developer 💻','UI/UX Designer 🎨','Problem Solver 🧩','AI Enthusiast 🤖'];
 var phraseIdx=0,charIdx=0,deleting=false;
 function typeLoop(){
@@ -365,7 +365,7 @@ function typeLoop(){
 }
 typeLoop();
 
-/* ── STAT COUNTER ── */
+
 function animateStats(){
     document.querySelectorAll('.stat-num').forEach(function(el){
         var target=parseInt(el.dataset.target||'0');
@@ -377,7 +377,7 @@ var statsObs=new IntersectionObserver(function(entries){entries.forEach(function
 var statsEl=document.querySelector('.hero-stats');
 if(statsEl)statsObs.observe(statsEl);
 
-/* ── BADMINTON WIDGET ── */
+
 (function(){
     var scrolledDown = false;
     var btn = document.getElementById('badmintonBtn');
@@ -395,11 +395,11 @@ if(statsEl)statsObs.observe(statsEl);
         shuttle.style.top = startY + 'px';
         shuttle.style.display = 'block';
         shuttle.classList.remove('flying');
-        // Trigger reflow
+        
         shuttle.offsetWidth;
         shuttle.classList.add('flying');
 
-        // Animate shuttle position
+ 
         var start = null;
         var dur = 650;
         function step(ts) {
@@ -415,16 +415,16 @@ if(statsEl)statsObs.observe(statsEl);
 
     btn.addEventListener('click', function() {
         if (!scrolledDown) {
-            // Fire shuttle downward
+           
             fireShuttle(true);
-            // Scroll to projects section
+            
             var target = document.getElementById('projects') || document.getElementById('reviews');
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             scrolledDown = true;
             racketLabel.textContent = 'scroll ↑';
             btn.querySelector('.racket-icon').style.transform = 'scaleY(-1)';
         } else {
-            // Fire shuttle upward
+           
             fireShuttle(false);
             window.scrollTo({ top: 0, behavior: 'smooth' });
             scrolledDown = false;
@@ -445,9 +445,9 @@ if(statsEl)statsObs.observe(statsEl);
     });
 })();
 
-/* ── REVIEW MODAL ── */
+
 (function(){
-    // ── CONFIG: change this to your desired 4-digit password ──
+    
     var REVIEW_PIN = '1234';
 
     var overlay   = document.getElementById('reviewModalOverlay');
@@ -483,7 +483,7 @@ if(statsEl)statsObs.observe(statsEl);
     overlay && overlay.addEventListener('click', function(e){if(e.target===overlay)closeModal();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay&&overlay.classList.contains('active'))closeModal();});
 
-    // PIN inputs — auto-advance and backspace
+    
     pinInputs.forEach(function(inp, idx){
         inp.addEventListener('input', function(){
             inp.value = inp.value.replace(/[^0-9]/g,'').slice(-1);
@@ -501,7 +501,7 @@ if(statsEl)statsObs.observe(statsEl);
         });
     });
 
-    // PIN submit
+    
     var pinBtn = document.getElementById('pinSubmitBtn');
     if(pinBtn) pinBtn.addEventListener('click', function(){
         var entered = Array.from(pinInputs).map(function(i){return i.value;}).join('');
@@ -514,7 +514,7 @@ if(statsEl)statsObs.observe(statsEl);
         }
         pinError.textContent='';
         showStep(2);
-        // Reset form
+       
         document.getElementById('rv_name').value='';
         document.getElementById('rv_role').value='';
         document.getElementById('rv_text').value='';
@@ -523,7 +523,7 @@ if(statsEl)statsObs.observe(statsEl);
         setStars(5);
     });
 
-    // Star picker
+
     function setStars(val){
         selectedRating = val;
         document.querySelectorAll('.star-pick').forEach(function(s){
@@ -543,17 +543,17 @@ if(statsEl)statsObs.observe(statsEl);
         });
     });
 
-    // Char counter
+    
     var rvText = document.getElementById('rv_text');
     if(rvText) rvText.addEventListener('input', function(){
         document.getElementById('rv_charcount').textContent = rvText.value.length;
     });
 
-    // Done btn
+   
     var doneBtn = document.getElementById('reviewDoneBtn');
     if(doneBtn) doneBtn.addEventListener('click', closeModal);
 
-    // Submit — actual Firebase write is in module script below
+  
     var reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
     if(reviewSubmitBtn) reviewSubmitBtn.addEventListener('click', function(){
         var name = document.getElementById('rv_name').value.trim();
@@ -602,7 +602,6 @@ function openPopup(data){
 }
 </script>
 
-<!-- ══════════ FIREBASE ══════════ -->
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import { getFirestore, collection, getDocs, addDoc, query, orderBy, limit, where, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
@@ -621,7 +620,7 @@ const db = getFirestore(app);
 function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function normalizeImageList(value){if(Array.isArray(value))return value.filter(Boolean);if(typeof value==='string'){var t=value.trim();if(!t)return[];try{var p=JSON.parse(t);if(Array.isArray(p))return p.filter(Boolean);}catch(_){}return t.split(',').map(v=>v.trim()).filter(Boolean);}return[];}
 
-/* ── FEATURED PROJECTS ── */
+
 function buildCard(p, num) {
     const tech = Array.isArray(p.tech) ? p.tech : (p.tech ? [p.tech] : []);
     const techBadges = tech.slice(0, 4).map(t=>`<span class="tech-badge">${esc(t)}</span>`).join('');
@@ -686,7 +685,7 @@ async function loadFeaturedProjects() {
         }
         let count = 0;
         snap.forEach(doc => { count++; grid.innerHTML += buildCard(doc.data(), count); });
-        // Attach popups
+       
         grid.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', e => {
                 if (e.target.closest('a')) return;
@@ -694,9 +693,9 @@ async function loadFeaturedProjects() {
                 if (typeof openPopup==='function') openPopup({title:card.dataset.title,shortDesc:card.dataset.shortDesc,desc:card.dataset.desc,features,type:card.dataset.type,img:card.dataset.img,images:card.dataset.images,demo:card.dataset.demo,code:card.dataset.code,tech:card.dataset.tech});
             });
         });
-        // Re-observe for reveal
+   
         if (typeof revealObs !== 'undefined') grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
-        // Re-attach cursor hover
+
         grid.querySelectorAll('a,button,.project-card').forEach(el=>{el.addEventListener('mouseenter',()=>{if(cursor){cursor.style.transform='scale(2)';follower.style.borderColor='var(--green)';}});el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.transform='scale(1)';follower.style.borderColor='var(--blue-bright)';}});});
     } catch(err) {
         console.error(err);
@@ -704,12 +703,11 @@ async function loadFeaturedProjects() {
     }
 }
 
-/* ── REVIEWS ── */
 function buildReview(r, index) {
     const stars = '★'.repeat(Math.min(5, Math.max(1, r.rating || 5)));
     const emptyStars = '☆'.repeat(5 - (r.rating || 5));
     const initials = (r.name||'A').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    // Gradient per card
+ 
     const gradients = [
         'linear-gradient(135deg,#0066ff,#00ff88)',
         'linear-gradient(135deg,#7c3aed,#00a8ff)',
@@ -739,7 +737,7 @@ async function loadReviews() {
         const snap = await getDocs(q);
         grid.innerHTML = '';
         if (snap.empty) {
-            // Show placeholder reviews if none in DB
+           
             const placeholders = [
                 {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
                 {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
@@ -754,7 +752,7 @@ async function loadReviews() {
         if(typeof revealObs!=='undefined')grid.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
     } catch(err) {
         console.error('Reviews error:', err);
-        // Fallback to placeholder reviews on error
+        
         const placeholders = [
             {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
             {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
@@ -765,7 +763,7 @@ async function loadReviews() {
     }
 }
 
-/* ── SUBMIT REVIEW ── */
+/* SUBMIT REVIEW  */
 document.addEventListener('submitReview', async function(e) {
     var btn = document.getElementById('reviewSubmitBtn');
     var orig = btn ? btn.innerHTML : '';
@@ -778,12 +776,12 @@ document.addEventListener('submitReview', async function(e) {
             text:      e.detail.text,
             createdAt: serverTimestamp()
         });
-        // Show success step
+        
         var s2 = document.getElementById('reviewStep2');
         var s3 = document.getElementById('reviewStep3');
         if(s2) s2.style.display='none';
         if(s3) s3.style.display='block';
-        // Reload reviews
+        
         await loadReviews();
     } catch(err) {
         console.error('Review submit error:', err);
