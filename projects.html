@@ -16,24 +16,16 @@
 <canvas id="bgCanvas"></canvas>
 
 <!--  BADMINTON  -->
-<div id="badminton-widget" title="Click to scroll!">
-    <div class="badminton-container" id="badmintonBtn">
-        <div class="racket-icon" id="racketIcon">🏸</div>
-        <div class="racket-label" id="racketLabel">scroll ↓</div>
-    </div>
-</div>
-<div id="shuttlecock">🏸</div>
-
 
 <header>
     <nav>
-        <a href="index.html" class="logo"><span>&lt;</span>Sanketh<span>/&gt;</span></a>
+        <a href="index.html" class="logo"><span></span>_ Jaindu Sanketh _<span></span></a>
         <button class="theme-bulb" id="themeBulb" aria-label="Toggle theme">
             <i class="fas fa-lightbulb"></i>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="projects.html" class="active"><i class="fas fa-rocket"></i> Projects</a></li>
-            <li><a href="contact.html" class="nav-contact-btn"><i class="fas fa-satellite-dish"></i> Let's talk</a></li>
+            <li><a href="projects.html" class="active"> Projects</a></li>
+            <li><a href="contact.html" class="nav-contact-btn"> Let's talk</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -43,7 +35,7 @@
 
 <!-- Hero -->
 <div class="projects-hero">
-    <h1 class="section-title reveal">All <span class="gradient-text">Projects</span> 🚀</h1>
+    <h1 class="section-title reveal" style="color: #05fe37; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);">All <span class="gradient-text">Projects</span> 🚀</h1>
     <div class="section-line"></div>
     <p class="section-subtitle reveal" style="margin-bottom:0;">Explore my complete portfolio of web apps, mobile apps &amp; AI solutions 🤖</p>
 </div>
@@ -73,41 +65,15 @@
 
 
 <footer>
-    <div class="footer-logo"><span class="gradient-text">Sanketh</span> 👨‍💻</div>
+    <div class="footer-logo"><span class="gradient-text">Sanketh</span></div>
 
     <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;">
         <a href="index.html" style="color:var(--gray);text-decoration:none;font-size:0.85rem;">🏠 Home</a>
-        <a href="contact.html" style="color:var(--gray);text-decoration:none;font-size:0.85rem;">📬 Contact</a>
+        <a href="contact.html" style="color:var(--gray);text-decoration:none;font-size:0.85rem;">📬 Contact me</a>
     </div>
 </footer>
 
 
-<div class="popup-overlay" id="popupOverlay">
-    <div class="popup-card">
-        <button class="popup-close" id="popupClose"><i class="fas fa-times"></i></button>
-        <div id="popupImgContainer"></div>
-        <div class="popup-gallery" id="popupGallery"></div>
-        <div class="popup-glow-bar"></div>
-        <div class="popup-body">
-            <div class="popup-tag" id="popupType"></div>
-            <h2 id="popupTitle"></h2>
-            
-            <p class="popup-short-desc" id="popupShortDesc"></p>
-            
-            <p class="popup-long-desc" id="popupDesc"></p>
-            
-            <div id="popupFeatures" style="display:none;margin-bottom:1.5rem;">
-                <h4 style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--blue-bright);margin-bottom:0.8rem;">✨ Features</h4>
-                <ul id="popupFeaturesList" style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;"></ul>
-            </div>
-            <div class="popup-tech" id="popupTech"></div>
-            <div class="popup-btns">
-                <a href="#" id="popupDemoBtn" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> Live 🌐</a>
-                <a href="#" id="popupCodeBtn" class="btn btn-secondary" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
 
@@ -374,65 +340,47 @@ function buildCard(p, num) {
     </div>`;
 }
 
+
 async function loadAllProjects() {
-    const grid = document.getElementById('projectsGrid');
-    try {
-        const q = query(collection(db,'projects'), orderBy('order','asc'));
-        const snap = await getDocs(q);
-        grid.innerHTML = '';
-        if (snap.empty) {
-            grid.innerHTML = '<div class="firebase-error" style="grid-column:1/-1;">No projects found 😅<br><small>Add some in Firebase Console.</small></div>';
-            return;
-        }
-        let count = 0;
-        snap.forEach(doc => { count++; grid.innerHTML += buildCard(doc.data(), count); });
+  const grid = document.getElementById('projectsGrid');
+  try {
+    const q = query(collection(db,'projects'), orderBy('order','asc'));
+    const snap = await getDocs(q);
+    grid.innerHTML = '';
 
-     
-        document.getElementById('noResults') && (document.getElementById('noResults').style.display='none');
-
-        // Attach filters
-        if (typeof attachFilters === 'function') attachFilters();
-
-        // Attach popups
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', e => {
-                if (e.target.closest('a')) return;
-                var features=[];
-                var desc='';
-                try{features=card.dataset.features?JSON.parse(card.dataset.features):[];}catch(_){}
-                try{desc=card.dataset.desc?JSON.parse(card.dataset.desc):'';}catch(_){desc=card.dataset.desc||'';}
-                if (typeof openPopup === 'function') {
-                    openPopup({
-                        title: card.dataset.title,
-                        shortDesc: card.dataset.shortDesc,
-                        desc: desc,
-                        features: features,
-                        type: card.dataset.type,
-                        img: card.dataset.img,
-                        images: card.dataset.images,
-                        demo: card.dataset.demo,
-                        code: card.dataset.code,
-                        tech: card.dataset.tech
-                    });
-                }
-            });
-        });
-
-        
-        if (typeof attachCursorHover === 'function') attachCursorHover();
-
-        
-        if (typeof revealObs !== 'undefined') {
-            document.querySelectorAll('.project-card').forEach(el=>revealObs.observe(el));
-        }
-
-    } catch(err) {
-        console.error(err);
-        grid.innerHTML = '<div class="firebase-error" style="grid-column:1/-1;">⚠️ Could not load projects.<br><small>Check Firebase config.</small></div>';
+    if (snap.empty) {
+      grid.innerHTML = '<div class="firebase-error" style="grid-column:1/-1;">No projects found.</div>';
+      return;
     }
+
+    let count = 0;
+    snap.forEach(docSnap => {
+      count++;
+      const p = docSnap.data();
+      const html = buildCard(p, count).replace(
+        'class="project-card"',
+        `class="project-card" data-id="${docSnap.id}"`
+      );
+      grid.innerHTML += html;
+    });
+
+    if (typeof attachFilters === 'function') attachFilters();
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('a')) return;
+        const id = card.dataset.id;
+        if (id) window.location.href = `project.html?id=${encodeURIComponent(id)}`;
+      });
+    });
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = '<div class="firebase-error" style="grid-column:1/-1;">Could not load projects.</div>';
+  }
 }
 
 loadAllProjects();
+
 </script>
 
 </body>
