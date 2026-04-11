@@ -473,51 +473,7 @@
     box-shadow: 0 8px 25px rgba(0,102,255,0.1);
 }
 
-.review-carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 2rem auto;
-}
-
-.review-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
-    place-items: center;
-    justify-content: center;
-}
-
-.carousel-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.carousel-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: white;
-    transform: scale(1.1);
-}
-
-.review-card
+.review-header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
