@@ -41,13 +41,99 @@
 }
 
 
-@media (max-width: 768px) {
-    .all-projects-grid { grid-template-columns: 1fr; }
-    .projects-hero { padding: 8rem 1.5rem 3rem; }
-    .all-projects-section { padding: 0 1.2rem 4rem; }
-    .filter-bar { padding: 0 1.2rem; }
+/* Tablet - 1024px and below */
+@media (max-width: 1024px) {
+    .projects-hero { padding: 6rem 1.5rem 3rem; }
+    .projects-hero h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    .projects-hero p { font-size: 1rem; }
+    
+    .all-projects-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    .all-projects-section { padding: 0 1.5rem 4rem; }
+    
+    .filter-bar { 
+        padding: 0 1.5rem;
+        margin-bottom: 2.5rem;
+        gap: 0.7rem;
+    }
+    .filter-btn { 
+        padding: 0.5rem 1.2rem;
+        font-size: 0.75rem;
+    }
 }
+
+/* Mobile - 768px and below */
+@media (max-width: 768px) {
+    .projects-hero { 
+        padding: 4rem 1.2rem 2.5rem;
+    }
+    .projects-hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.3rem); }
+    .projects-hero p { font-size: 0.95rem; }
+    
+    .all-projects-grid { 
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .all-projects-section { padding: 0 1rem 3rem; }
+    
+    .filter-bar { 
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+        gap: 0.6rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .filter-btn { 
+        padding: 0.48rem 1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.8px;
+    }
+    .filter-btn.active {
+        box-shadow: 0 0 15px rgba(0,102,255,0.3);
+    }
+    
+    .project-type-badge { 
+        font-size: 0.65rem;
+        padding: 0.25rem 0.7rem;
+        top: 0.6rem;
+        left: 0.6rem;
+    }
+}
+
+/* Small Mobile - 480px and below */
 @media (max-width: 480px) {
-    .all-projects-grid { grid-template-columns: 1fr; }
+    .projects-hero { 
+        padding: 2.5rem 1rem 2rem;
+    }
+    .projects-hero h1 { font-size: clamp(1.4rem, 4vw, 1.8rem); }
+    .projects-hero p { font-size: 0.85rem; }
+    
+    .all-projects-grid { 
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .all-projects-section { padding: 0 0.75rem 2rem; }
+    
+    .filter-bar { 
+        padding: 0 0.75rem;
+        margin-bottom: 1.5rem;
+        gap: 0.5rem;
+    }
+    .filter-btn { 
+        padding: 0.4rem 0.9rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.6px;
+        border-radius: 20px;
+    }
+    
+    .project-type-badge { 
+        font-size: 0.6rem;
+        padding: 0.2rem 0.6rem;
+        top: 0.5rem;
+        left: 0.5rem;
+        border-radius: 15px;
+    }
 }
 
