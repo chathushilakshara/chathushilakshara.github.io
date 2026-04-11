@@ -214,7 +214,8 @@ footer {
 }
 
 /* responsive */
-@medhtml { overflow-x: hidden; }
+@media (max-width: 768px) {
+    html { overflow-x: hidden; }
     body { 
         overflow-x: clip;
         width: 100%;
@@ -242,8 +243,7 @@ footer {
         pointer-events: none;
     }
     .nav-links.open { 
-        left: calc(100% - 260px
-        transform: translateX(0);
+        left: calc(100% - 260px);
         visibility: visible;
         opacity: 1;
         pointer-events: auto;
