@@ -214,24 +214,33 @@ footer {
 
 /* responsive */
 @media (max-width: 768px) {
-    .hamburger { display: block; }
+    body { overflow-x: hidden; }
+    .hamburger { 
+        display: block;
+        z-index: 1001;
+    }
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 260px;
         height: 100vh;
         background: #050505;
         border-left: 1px solid var(--border);
         flex-direction: column;
         justify-content: center;
-        transition: right .3s ease;
+        transition: all .3s ease;
         padding: 1.5rem;
         z-index: 999;
+        transform: translateX(100%);
         visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
     }
     .nav-links.open { 
-        right: 0; 
+        transform: translateX(0);
         visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
     }
 }
