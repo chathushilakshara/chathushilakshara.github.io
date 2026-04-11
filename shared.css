@@ -21,6 +21,7 @@ body {
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
     line-height: 1.75;
 }
 
@@ -213,31 +214,35 @@ footer {
 }
 
 /* responsive */
-@media (max-width: 768px) {
-    body { overflow-x: hidden; }
+@medhtml { overflow-x: hidden; }
+    body { 
+        overflow-x: clip;
+        width: 100%;
+    }
     .hamburger { 
         display: block;
         z-index: 1001;
+        position: relative;
     }
     .nav-links {
         position: fixed;
         top: 0;
-        right: 0;
+        left: 100%;
         width: 260px;
         height: 100vh;
         background: #050505;
         border-left: 1px solid var(--border);
         flex-direction: column;
         justify-content: center;
-        transition: all .3s ease;
+        transition: left .3s ease;
         padding: 1.5rem;
         z-index: 999;
-        transform: translateX(100%);
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
     }
     .nav-links.open { 
+        left: calc(100% - 260px
         transform: translateX(0);
         visibility: visible;
         opacity: 1;
