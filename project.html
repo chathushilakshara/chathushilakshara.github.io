@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .project-wrap { max-width: 900px; margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
+    .back-link { margin-bottom: 1rem; display: inline-flex; }
+    .hero-img { width: 100%; border-radius: 14px; border: 1px solid var(--border); margin: 1rem 0 1.4rem; object-fit: cover; max-height: 420px; }
+    .meta { color: var(--muted); margin-bottom: 1rem; }
+    .section { margin-top: 1.4rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .section h3 { font-family: 'Orbitron', monospace; font-size: .95rem; margin-bottom: .6rem; }
+    .desc { font-size: 1.04rem; line-height: 1.9; color: #e8e8e8; white-space: pre-wrap; }
+    .features { list-style: none; display: grid; gap: .5rem; }
+    .features li { color: var(--muted); }
+    .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.5rem; margin: 1rem 0; }
+
+    /* Reviews */
+    .reviews-section-wrap {
+        position: relative;
+        z-index: 10;
+        padding: 2rem 0 6rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        background: linear-gradient(180deg, transparent, rgba(0,102,255,0.02));
+    }
+    .reviews-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.2rem;
+    }
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .review-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,102,255,0.1);
+    }
+    .review-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .review-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .review-info {
+        flex: 1;
+    }
+    .review-name {
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.2rem;
+    }
+    .review-role {
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+    .review-rating {
+        color: #ffd700;
+        font-size: 1.1rem;
+    }
+    .review-text {
+        color: var(--text);
+        line-height: 1.6;
+    }
+    .reviews-loading {
+        text-align: center;
+        padding: 3rem;
+        color: var(--muted);
+    }
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid var(--border);
+        border-top: 3px solid var(--blue);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Review Modal */
+    .review-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    .review-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .review-modal {
+        background: var(--surface);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        border: 1px solid var(--border);
+    }
+    .review-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+    .review-modal-close:hover {
+        background: var(--border);
+        color: var(--text);
+    }
+    .review-step {
+        text-align: center;
+    }
+    .review-modal-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .review-modal h3 {
+        color: var(--text);
+        margin-bottom: 0.5rem;
+        font-family: 'Orbitron', monospace;
+    }
+    .review-modal-sub {
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    .review-pin-row {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .pin-input {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 1.5rem;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--text);
+        transition: border-color 0.2s ease;
+    }
+    .pin-input:focus {
+        outline: none;
+        border-color: var(--blue);
+    }
+    .review-pin-error {
+        color: #ff6b6b;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .review-btn-full {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+    .review-btn-full:hover {
+        background: var(--blue-bright);
+    }
+    .review-form-group {
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+    .review-form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 500;
+    }
+    .review-form-group input,
+    .review-form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--text);
+        font-size: 1rem;
+    }
+    .review-form-group input:focus,
+    .review-form-group textarea:focus {
+        outline: none;
+        border-color: var(--blue);
+    }
+    .review-form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    .star-picker {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    .star-pick {
+        font-size: 2rem;
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+    .star-pick.active {
+        color: #ffd700;
+    }
+    .star-pick.hover {
+        color: #ffd700;
+    }
+    .review-char-count {
+        text-align: right;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 0.2rem;
+    }
+    .review-form-error {
+        color: #ff6b6b;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="logo"><span></span>_ Jaindu Sanketh _<span></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html" class="nav-contact-btn">Let's talk</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main class="project-wrap">
+  <a href="projects.html" class="btn btn-secondary back-link">← Back to Projects</a>
+
+  <h1 id="title" class="section-title">Loading...</h1>
+  <p id="type" class="meta"></p>
+
+  <div class="actions">
+    <a id="demoBtn" href="#" target="_blank" class="btn btn-primary">Live Demo</a>
+    <a id="codeBtn" href="#" target="_blank" class="btn btn-secondary">Source Code</a>
+  </div>
+
+  <img id="heroImg" class="hero-img" alt="Project image" />
+
+  <div id="gallery" class="gallery" style="display: none;"></div>
+
+  <div class="section">
+    <h3>Overview</h3>
+    <p id="shortDesc" class="desc"></p>
+  </div>
+
+  <div class="section">
+    <h3>Tech Stack</h3>
+    <div id="tech" class="tech-badges"></div>
+  </div>
+
+  <div class="section">
+    <h3>Details</h3>
+    <p id="desc" class="desc"></p>
+  </div>
+
+  <div class="section" id="featuresWrap" style="display:none;">
+    <h3>Features</h3>
+    <ul id="features" class="features"></ul>
+  </div>
+
+
+<script>
+  var hamburger=document.getElementById('hamburger');
+  var navLinks=document.getElementById('navLinks');
+  if(hamburger){hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');navLinks.classList.toggle('open');});}
+
+  /* ── REVIEW MODAL ── */
+  (function(){
+    var REVIEW_PIN = '1234';
+    var overlay   = document.getElementById('reviewModalOverlay');
+    var openBtn   = document.getElementById('leaveReviewBtn');
+    var closeBtn  = document.getElementById('reviewModalClose');
+    var step1     = document.getElementById('reviewStep1');
+    var step2     = document.getElementById('reviewStep2');
+    var step3     = document.getElementById('reviewStep3');
+    var pinError  = document.getElementById('pinError');
+    var pinInputs = document.querySelectorAll('.pin-input');
+    var selectedRating = 5;
+
+    function openModal(){
+        overlay.classList.add('active');
+        document.body.style.overflow='hidden';
+        showStep(1);
+        pinInputs.forEach(function(i){i.value='';});
+        pinError.textContent='';
+        setTimeout(function(){if(pinInputs[0])pinInputs[0].focus();},200);
+    }
+    function closeModal(){
+        overlay.classList.remove('active');
+        document.body.style.overflow='';
+    }
+    function showStep(n){
+        step1.style.display = n===1?'block':'none';
+        step2.style.display = n===2?'block':'none';
+        step3.style.display = n===3?'block':'none';
+    }
+
+    if(openBtn) openBtn.addEventListener('click', openModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    overlay && overlay.addEventListener('click', function(e){if(e.target===overlay)closeModal();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay&&overlay.classList.contains('active'))closeModal();});
+
+    pinInputs.forEach(function(inp, idx){
+        inp.addEventListener('input', function(){
+            inp.value = inp.value.replace(/[^0-9]/g,'').slice(-1);
+            if(inp.value && idx < pinInputs.length-1) pinInputs[idx+1].focus();
+        });
+        inp.addEventListener('keydown', function(e){
+            if(e.key==='Backspace' && !inp.value && idx > 0) pinInputs[idx-1].focus();
+        });
+        inp.addEventListener('paste', function(e){
+            e.preventDefault();
+            var pasted = (e.clipboardData||window.clipboardData).getData('text').replace(/[^0-9]/g,'');
+            pinInputs.forEach(function(pi,i){ pi.value = pasted[i]||''; });
+            var last = Math.min(pasted.length, pinInputs.length) - 1;
+            if(last>=0) pinInputs[last].focus();
+        });
+    });
+
+    var pinBtn = document.getElementById('pinSubmitBtn');
+    if(pinBtn) pinBtn.addEventListener('click', function(){
+        var entered = Array.from(pinInputs).map(function(i){return i.value;}).join('');
+        if(entered.length < 4){ pinError.textContent='Enter all 4 digits.'; return; }
+        if(entered !== REVIEW_PIN){
+            pinError.textContent='Incorrect password. Try again. ❌';
+            pinInputs.forEach(function(i){i.value='';});
+            pinInputs[0].focus();
+            return;
+        }
+        pinError.textContent='';
+        showStep(2);
+        document.getElementById('rv_name').value='';
+        document.getElementById('rv_role').value='';
+        document.getElementById('rv_text').value='';
+        document.getElementById('rv_charcount').textContent='0';
+        document.getElementById('reviewFormError').textContent='';
+        setStars(5);
+    });
+
+    function setStars(val){
+        selectedRating = val;
+        document.querySelectorAll('.star-pick').forEach(function(s){
+            s.classList.toggle('active', parseInt(s.dataset.val) <= val);
+        });
+    }
+    setStars(5);
+    document.querySelectorAll('.star-pick').forEach(function(s){
+        s.addEventListener('click', function(){ setStars(parseInt(s.dataset.val)); });
+        s.addEventListener('mouseenter', function(){
+            document.querySelectorAll('.star-pick').forEach(function(st){
+                st.classList.toggle('hover', parseInt(st.dataset.val) <= parseInt(s.dataset.val));
+            });
+        });
+        s.addEventListener('mouseleave', function(){
+            document.querySelectorAll('.star-pick').forEach(function(st){ st.classList.remove('hover'); });
+        });
+    });
+
+    var rvText = document.getElementById('rv_text');
+    if(rvText) rvText.addEventListener('input', function(){
+        document.getElementById('rv_charcount').textContent = rvText.value.length;
+    });
+
+    var doneBtn = document.getElementById('reviewDoneBtn');
+    if(doneBtn) doneBtn.addEventListener('click', closeModal);
+
+    var reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
+    if(reviewSubmitBtn) reviewSubmitBtn.addEventListener('click', function(){
+        var name = document.getElementById('rv_name').value.trim();
+        var role = document.getElementById('rv_role').value.trim();
+        var text = document.getElementById('rv_text').value.trim();
+        var err  = document.getElementById('reviewFormError');
+        if(!name){ err.textContent='Please enter your name.'; return; }
+        if(!text || text.length < 10){ err.textContent='Please write at least 10 characters.'; return; }
+        err.textContent='';
+        document.dispatchEvent(new CustomEvent('submitReview', {
+            detail: { name: name, role: role || 'Client', rating: selectedRating, text: text }
+        }));
+    });
+  })();
+</script>
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+  import { getFirestore, doc, getDoc, collection, getDocs, addDoc, query, orderBy, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyADglpxL2r1WAO9ibWG2FFwLMzaWm7zMrM",
+    authDomain: "sanketh-portfolio.firebaseapp.com",
+    projectId: "sanketh-portfolio",
+    storageBucket: "sanketh-portfolio.firebasestorage.app",
+    messagingSenderId: "569043022670",
+    appId: "1:569043022670:web:2cf12217fc00d49cc8641f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+  function buildReview(r, idx) {
+    const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+    return `<div class="review-card reveal" style="animation:fadeUp 0.5s ease ${idx*0.1}s both;">
+      <div class="review-header">
+        <div class="review-avatar">${(r.name||'Anonymous').charAt(0).toUpperCase()}</div>
+        <div class="review-info">
+          <div class="review-name">${esc(r.name||'Anonymous')}</div>
+          <div class="review-role">${esc(r.role||'Client')}</div>
+        </div>
+        <div class="review-rating">${stars}</div>
+      </div>
+      <div class="review-text">${esc(r.text||'')}</div>
+    </div>`;
+  }
+
+  async function loadReviews() {
+    const grid = document.getElementById('reviewsGrid');
+    try {
+      const q = query(collection(db,'reviews'), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      grid.innerHTML = '';
+      if (snap.empty) {
+        const placeholders = [
+          {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
+          {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
+          {name:'Mike Torres',role:'Small Business Owner',rating:5,text:'Our website completely transformed after Sanketh rebuilt it. Traffic and conversions went through the roof!'},
+        ];
+        grid.innerHTML = placeholders.map((r,i)=>buildReview(r,i)).join('');
+        return;
+      }
+      let idx = 0;
+      snap.forEach(doc => { grid.innerHTML += buildReview(doc.data(), idx++); });
+    } catch(err) {
+      console.error('Reviews error:', err);
+      const placeholders = [
+        {name:'Alex Johnson',role:'Startup Founder',rating:5,text:'Sanketh delivered a stunning web app that exceeded all expectations. Professional, fast, and truly talented!'},
+        {name:'Sarah Chen',role:'Product Manager',rating:5,text:'Working with Sanketh was a great experience. Clean code, beautiful design, and great communication throughout.'},
+        {name:'Mike Torres',role:'Small Business Owner',rating:5,text:'Our website completely transformed after Sanketh rebuilt it. Traffic and conversions went through the roof!'},
+      ];
+      grid.innerHTML = placeholders.map((r,i)=>buildReview(r,i)).join('');
+    }
+  }
+
+  document.addEventListener('submitReview', async function(e) {
+    var btn = document.getElementById('reviewSubmitBtn');
+    var orig = btn ? btn.innerHTML : '';
+    try {
+      if(btn){ btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Submitting...'; btn.disabled=true; }
+      await addDoc(collection(db, 'reviews'), {
+        name:      e.detail.name,
+        role:      e.detail.role,
+        rating:    e.detail.rating,
+        text:      e.detail.text,
+        createdAt: serverTimestamp()
+      });
+      var s2 = document.getElementById('reviewStep2');
+      var s3 = document.getElementById('reviewStep3');
+      if(s2) s2.style.display='none';
+      if(s3) s3.style.display='block';
+      await loadReviews();
+    } catch(err) {
+      console.error('Review submit error:', err);
+      var errEl = document.getElementById('reviewFormError');
+      if(errEl) errEl.textContent = '❌ Failed to submit. Please try again.';
+    } finally {
+      if(btn){ btn.innerHTML=orig; btn.disabled=false; }
+    }
+  });
+
+  function getId() {
+    const p = new URLSearchParams(location.search);
+    return p.get('id');
+  }
+
+  function normalizeImageList(value){
+    if(Array.isArray(value)) return value.filter(Boolean);
+    if(typeof value==='string'){
+      const t=value.trim();
+      if(!t) return [];
+      try { const parsed=JSON.parse(t); if(Array.isArray(parsed)) return parsed.filter(Boolean); } catch(e){}
+      return t.split(',').map(v=>v.trim()).filter(Boolean);
+    }
+    return [];
+  }
+
+  async function loadProject() {
+    const id = getId();
+    if(!id){
+      document.getElementById('title').textContent='Project not found';
+      return;
+    }
+    const ref = doc(db, 'projects', id);
+    const snap = await getDoc(ref);
+    if(!snap.exists()){
+      document.getElementById('title').textContent='Project not found';
+      return;
+    }
+    const p = snap.data();
+    const images = normalizeImageList(p.images).length ? normalizeImageList(p.images) : normalizeImageList(p.photos);
+    const hero = p.image || images[0] || 'photos/main.png';
+
+    document.title = (p.title || 'Project') + ' | Sanketh';
+    document.getElementById('title').textContent = p.title || 'Untitled';
+    document.getElementById('type').textContent = p.type || 'Project';
+    document.getElementById('heroImg').src = hero;
+    document.getElementById('shortDesc').textContent = p.shortDesc || '';
+    document.getElementById('desc').textContent = p.description || 'No detailed description available.';
+
+    // Gallery
+    const gallery = document.getElementById('gallery');
+    if (images.length > 1) {
+      gallery.style.display = 'grid';
+      gallery.innerHTML = images.map(img => `<img src="${img}" alt="Project image" onclick="document.getElementById('heroImg').src='${img}'" style="cursor:pointer; width:100%; height:80px; object-fit:cover; border-radius:8px;">`).join('');
+    }
+
+    const techWrap = document.getElementById('tech');
+    const tech = Array.isArray(p.tech) ? p.tech : (p.tech ? [p.tech] : []);
+    techWrap.innerHTML = tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
+
+    const features = Array.isArray(p.features) ? p.features : [];
+    if(features.length){
+      document.getElementById('featuresWrap').style.display = 'block';
+      document.getElementById('features').innerHTML = features.map(f=>`<li>• ${f}</li>`).join('');
+    }
+
+    const demoBtn = document.getElementById('demoBtn');
+    const codeBtn = document.getElementById('codeBtn');
+    if(p.demoUrl && p.demoUrl !== '#') demoBtn.href = p.demoUrl; else demoBtn.style.display='none';
+    if(p.codeUrl && p.codeUrl !== '#') codeBtn.href = p.codeUrl; else codeBtn.style.display='none';
+  }
+
+  loadProject().catch(err=>{
+    console.error(err);
+    document.getElementById('title').textContent='Failed to load project';
+  });
+
+  loadReviews();
+</script>
+</body>
+</html>
