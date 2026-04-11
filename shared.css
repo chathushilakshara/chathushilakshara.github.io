@@ -227,6 +227,11 @@ footer {
         justify-content: center;
         transition: right .3s ease;
         padding: 1.5rem;
+        z-index: 999;
+        visibility: hidden;
     }
-    .nav-links.open { right: 0; }
+    .nav-links.open { 
+        right: 0; 
+        visibility: visible;
+    }
 }
